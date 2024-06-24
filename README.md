@@ -1,6 +1,10 @@
 # Bloggy
 
 A blogging website that I made!
+Not made for smaller screens!!! 
+Something I have learnt for next time!
+
+https://bloggy-w7q8.onrender.com/
 
 Loads learnt and loads I would like to have done differently!
 
