@@ -1,0 +1,41 @@
+<%- include("partials/header.ejs") %>
+<!--
+First checks if blogs data has been based from server
+Then displays the data of post
+Then when title clicked on sends GET request to server. Uses indexOf(element) to get location of blog object.
+Sends this object loction with GET request to server (index.js)
+Renders view.ejs with clicked on blog post. 
+
+div class with JS code, either gives 0 or 1 for class name. 
+0 aligned left In css this is called box0 as digits can't be used as class names
+1 aligned right In css this is called box1
+If there isn't any blog posts to show. Say ooo so empty 
+-->
+<body class="indexBody">
+<h1 class="homePage">Bloggers Blog Blog </h1>
+<div class="indexMain">
+<% if (locals.blogs) { %> 
+    <% blogs.forEach(element => {%>
+    <div class="background<%=blogs.indexOf(element) % 2%>">
+        <div class="box<%=blogs.indexOf(element) % 2%>">
+            <h2><a class="blogsTitle" href="/view/<%= blogs.indexOf(element)%>"> <%=element.title%></a></h2>
+            <p class="blogsDate"><%=element.date%></p>
+            <p class="blogsContent"><%=element.content%></p>
+            <p class="blogsAuthor">Author <%=element.author%></p>
+        </div>
+    </div>
+        <%});%>
+        
+    <%}%>
+    <div class="indexEmpty">
+<% if (blogs.length === 0) { %>
+        <h2 class="indexEmptyTitle"> Ooooo So empty</h2>
+   <% };%>
+    </div>
+</div>
+
+</body>    
+
+<%- include("partials/footer.ejs") %>
+
+

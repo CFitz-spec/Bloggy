@@ -1,0 +1,33 @@
+<%- include("partials/header.ejs") %>
+<body>
+<div class="createMain">
+    <h1>Create Page</h1>
+
+<% if (locals.editPost) { %>
+   <form action="/update" method="post">
+        <p class="createTitle">Title</p>
+        <input type="text" class="createTitleInput" name="updateTitle" value="<%=editPost.title%>"required>
+        <p class="createContent">Content</p>
+        <textarea class="createTextBox" name="updateContent" required><%=editPost.content%></textarea>
+        <input type="text" name="updateAuthor" value="<%=editPost.author%>" hidden>
+        <input type="text" name="updateId" value="<%=editId%>" hidden>
+        <input class="editButton" type="submit" value="Update">
+   </form>
+
+
+
+<%} else { %>
+    <form action="/newPost" method="post">
+        <p class="createTitle">Title</p>
+        <input type="text" class="createTitleInput" name="title" placeholder="Enter your blogs Title" required>
+        <p class="createContent">Content</p>
+        <textarea class="createTextBox" name="content" placeholder="What do you want to blog about?" required></textarea>
+        <p class="createAuthor">Author</p>
+        <input class="createAuthorBox" type="text" name="author" placeholder="Who's blogging?" required>
+        <input class="editButton" type="submit" value="Post"> 
+    </form>
+<%}%> 
+</div>    
+</body>
+
+<%- include("partials/footer.ejs") %>

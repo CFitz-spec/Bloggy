@@ -1,0 +1,52 @@
+<%- include("partials/header.ejs") %>
+<body class="viewBody">
+<div class="viewMain">
+
+
+<!--
+First Checks if the post data exists.
+Then displays data 
+-->
+<div class="containerView">
+<% if (locals.post) { %>
+   
+    <h2 class="viewTitle"><%=post.title%></h2>
+    <p class="viewDate"><%=post.date%></p>
+    <p class="viewContent"><%=post.content%></p>
+    <p class="viewAuthor">Author <%=post.author%></p>
+<%} %>
+</div>
+<!--
+Delete button. Uses postId as id key to 
+delete blogPost object from blogPosts array.
+-->
+<div class="button-container">
+    
+
+   
+<% if (locals.postId) { %>
+    <form action="/delete" method="POST">
+        <input type="text" name="postId" value="<%=postId%>" hidden>
+        <input class="deleteButton" type="submit"value="Delete">
+    </form>
+   
+<%}%>
+<!--
+Edit button. Uses postId as id key to 
+Opens create page with blogPost object from blogPosts array.
+-->
+    
+
+
+<% if (locals.postId) { %>
+    <form action="/edit" method="POST">
+        <input type="text" name="postId" value="<%=postId%>" hidden>
+        <input class="editButton" type="submit"value="Edit">
+    </form>
+    
+</div>    
+<%}%>
+</div>
+</body>
+
+<%- include("partials/footer.ejs") %>
